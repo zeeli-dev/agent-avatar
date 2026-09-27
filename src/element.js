@@ -54,7 +54,14 @@ const io =
     for (const e of entries) e.target.shadowRoot.firstElementChild?.toggleAttribute('data-off', !e.isIntersecting);
   });
 
-export class AgentAvatar extends HTMLElement {
+// Reduced motion reuses lite mode's static fallbacks (visible props, finished tags) on top of the
+// CSS that stops every animation. ponytail: read at render time, a live OS toggle applies on next update.
+const reducedMotion = typeof matchMedia !== 'undefined' ? matchMedia('(prefers-reduced-motion: reduce)') : null;
+
+// Lets the module load during SSR / in Node, where HTMLElement does not exist.
+const Base = typeof HTMLElement === 'undefined' ? class {} : HTMLElement;
+
+export class AgentAvatar extends Base {
   static observedAttributes = ['variant', 'state', 'size', 'label'];
   #root;
   #variant;
@@ -83,19 +90,22 @@ export class AgentAvatar extends HTMLElement {
     const variant = VARIANTS.includes(v) ? v : 'mochi';
     const state = STATES.includes(s) ? s : 'idle';
     if (variant !== this.#variant) {
+      const wasOff = this.#root?.hasAttribute('data-off') ?? false;
       this.#variant = variant;
       this.shadowRoot.adoptedStyleSheets = [sheetFor(variant)];
       this.shadowRoot.replaceChildren(templateFor(variant).cloneNode(true));
       this.#root = this.shadowRoot.firstElementChild;
+      // The observer only reports changes, so keep the offscreen pause across the swap.
+      this.#root.toggleAttribute('data-off', wasOff);
     }
     const root = this.#root;
     if (root.dataset.s !== state) root.dataset.s = state;
     root.setAttribute('aria-label', this.getAttribute('label') ?? `Agent ${state}`);
+
     const size = this.getAttribute('size');
-    if (size) {
-      this.style.setProperty('--size', /^\d+(\.\d+)?$/.test(size) ? `${size}px` : size);
-      const px = /^\d+(\.\d+)?(px)?$/.test(size) ? parseFloat(size) : Infinity;
-      root.toggleAttribute('data-lite', px <= LITE_MAX);
-    }
+    if (size) this.style.setProperty('--size', /^\d+(\.\d+)?$/.test(size) ? `${size}px` : size);
+    else this.style.removeProperty('--size');
+    const px = size && /^\d+(\.\d+)?(px)?$/.test(size) ? parseFloat(size) : Infinity;
+    root.toggleAttribute('data-lite', px <= LITE_MAX || !!reducedMotion?.matches);
   }
 }

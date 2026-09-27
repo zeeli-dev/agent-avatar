@@ -39,6 +39,7 @@ ${face(56, { dx: 10, rx: 3.8, ry: 5, mouth: false })}
 .flip-l{transform-origin:32px 64px}
 .flip-r{transform-origin:88px 64px}
 .ln{stroke-dasharray:1;stroke-dashoffset:1}
+.root[data-lite] .ln{stroke-dashoffset:0}
 [data-s=idle] .bob{animation:p-waddle 2.4s ease-in-out infinite}
 [data-s=working] .squash{animation:breathe 1.6s ease-in-out infinite}
 [data-s=working] .pencil{animation:p-scribble .7s ease-in-out infinite}

@@ -12,7 +12,7 @@ export default {
 </defs>
 <g class="st s-working">
   <g class="juggle">
-    <circle cx="72" cy="10" r="4" fill="#ffd23f"/><circle cx="54" cy="20.4" r="4" fill="#4ecdc4"/><circle cx="54" cy="-.4" r="4" fill="#7c5cff"/>
+    <circle cx="71" cy="13" r="4" fill="#ffd23f"/><circle cx="54.5" cy="22.5" r="4" fill="#4ecdc4"/><circle cx="54.5" cy="3.5" r="4" fill="#7c5cff"/>
   </g>
 </g>
 <g stroke="#ff5fa8" stroke-width="8.5" fill="none" stroke-linecap="round">
@@ -26,7 +26,7 @@ export default {
 ${face(56)}`,
   css: `
 .tt{transform-box:fill-box;transform-origin:50% 0}
-.juggle{transform-origin:60px 10px}
+.juggle{transform-origin:60px 13px}
 .root .tt:nth-child(even){animation-direction:alternate-reverse}
 [data-s=idle] .tt{animation:oc-wave 1.6s ease-in-out infinite alternate}
 [data-s=idle] .squash{animation:breathe 3.2s ease-in-out infinite}

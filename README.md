@@ -32,6 +32,8 @@ Open http://localhost:4173/docs/ for the playground, the full gallery, the API a
 | `size` | px number or CSS length. Numbers at 32 or below turn on lite mode. | `96px` |
 | `label` | accessible label | `Agent <state>` |
 
+Types for the React JSX element come from `@types/react` (an optional peer dependency). Importing in Node or during SSR is safe; the element only renders in the browser.
+
 Exports: `AgentAvatar`, `VARIANTS`, `CHARACTERS` (title, set, description per variant), `SETS`, `STATES`.
 
 ## Layout
@@ -63,5 +65,5 @@ Draw on a 120×120 viewBox with the feet around y=104. Scope every animation to 
 - Body motion, badges and sparkles only animate `transform` and `opacity` on HTML layers, so they run on the compositor.
 - There are no SVG filters, and only the active state animates.
 - Avatars pause while offscreen.
-- Lite mode applies at 32px or smaller.
+- Lite mode applies at 32px or smaller, and whenever the OS asks for reduced motion.
 - Headless Chrome benchmark: 300 avatars at 28px hold 60fps.

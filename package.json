@@ -6,11 +6,27 @@
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "exports": {
-    ".": { "types": "./src/index.d.ts", "default": "./src/index.js" }
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    }
   },
-  "files": ["src"],
-  "sideEffects": ["./src/index.js", "./src/element.js"],
+  "files": [
+    "src"
+  ],
+  "sideEffects": [
+    "./src/index.js",
+    "./src/element.js"
+  ],
   "scripts": {
     "dev": "echo 'Docs: http://localhost:4173/docs/' && python3 -m http.server 4173"
+  },
+  "peerDependencies": {
+    "@types/react": ">=19"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
   }
 }

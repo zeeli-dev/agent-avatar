@@ -1,3 +1,5 @@
+import type { DetailedHTMLProps, HTMLAttributes } from 'react';
+
 export type AvatarVariant =
   | 'mochi' | 'byte' | 'orbit'
   | 'teddy' | 'pip' | 'kero'
@@ -24,16 +26,14 @@ export const CHARACTERS: Record<AvatarVariant, Character>;
 export const SETS: { id: AvatarSet; title: string }[];
 export class AgentAvatar extends HTMLElement {}
 
-type AgentAvatarAttributes = {
+export interface AgentAvatarProps {
   variant?: AvatarVariant;
   state?: AvatarState;
-  /** Pixels (number) or any CSS length. */
+  /** Pixels (number) or any CSS length. Numbers at 32 or below turn on lite mode. */
   size?: number | string;
+  /** Accessible label. Defaults to "Agent <state>". */
   label?: string;
-  class?: string;
-  className?: string;
-  style?: unknown;
-};
+}
 
 declare global {
   interface HTMLElementTagNameMap { 'agent-avatar': AgentAvatar }
@@ -41,6 +41,8 @@ declare global {
 
 declare module 'react' {
   namespace JSX {
-    interface IntrinsicElements { 'agent-avatar': AgentAvatarAttributes }
+    interface IntrinsicElements {
+      'agent-avatar': DetailedHTMLProps<HTMLAttributes<AgentAvatar>, AgentAvatar> & AgentAvatarProps;
+    }
   }
 }

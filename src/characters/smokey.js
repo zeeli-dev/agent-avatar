@@ -68,6 +68,7 @@ export default {
 [data-s=attention] .cig{animation:sm-talk .35s ease-in-out infinite alternate}
 [data-s=done] .ring{animation:sm-ring 1.8s ease-out infinite}
 .root[data-lite] .smk{opacity:.6}
+.root[data-lite] .ring{opacity:.8}
 @keyframes sm-tail{from{transform:rotate(-6deg)}to{transform:rotate(8deg)}}
 @keyframes sm-smoke{0%{transform:translateY(2px);opacity:0}30%{opacity:.8}100%{transform:translate(4px,-12px);opacity:0}}
 @keyframes sm-talk{to{transform:rotate(-8deg)}}

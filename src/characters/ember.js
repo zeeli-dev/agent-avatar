@@ -51,6 +51,7 @@ ${face(62)}
 [data-s=done] .wing-l{animation:em-flap-l .35s ease-in-out infinite alternate}
 [data-s=done] .wing-r{animation:em-flap-r .35s ease-in-out infinite alternate}
 .root[data-lite] .puff{opacity:.9}
+.root[data-lite] .smoke{opacity:.7}
 @keyframes em-flap-l{to{transform:rotate(-16deg)}}
 @keyframes em-flap-r{to{transform:rotate(16deg)}}
 @keyframes em-puff{0%{transform:translate(0,0) scale(.5);opacity:0}25%{opacity:1}100%{transform:translate(26px,-6px) scale(1.6);opacity:0}}
