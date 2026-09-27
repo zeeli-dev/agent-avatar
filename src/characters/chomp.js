@@ -1,4 +1,4 @@
-import { DEFS, INK, eye } from '../core/parts.js';
+import { DEFS, eye, INK } from '../core/parts.js';
 
 // Loan shark in shades and a gold chain. Counts cash while working, lowers the shades for attention.
 export default {

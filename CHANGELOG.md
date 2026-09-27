@@ -1,0 +1,55 @@
+# Changelog
+
+All notable changes to this project are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses [Semantic Versioning](https://semver.org/).
+
+## [Unreleased]
+
+### Added
+
+- Open-source release as `@zeeli/avatars` under the MIT license.
+- Biome lint and format, type tests, registry tests, a size budget and Playwright browser tests.
+- CI, npm release with provenance, and GitHub Pages docs workflows.
+- Contributing guide, code of conduct, security policy, and issue and pull request templates.
+
+### Changed
+
+- The docs page is split into `index.html`, `app.js` and `styles.css`.
+- `pnpm dev` runs a zero-dependency Node server instead of Python.
+
+## [0.5.0] - 2026-09-27
+
+### Added
+
+- Edgy crew set: Smokey, Pugsy, Spike, Glitch, Tagz and Chomp.
+- Wild bunch set: Nimbus, Toasty, Quack, Zorp, Turbo and Ember.
+- Docs site with sidebar navigation, a playground, and syntax highlighting.
+
+### Fixed
+
+- Removing the `size` attribute now resets the size and lite mode.
+- The offscreen pause survives a variant switch.
+- Importing in Node or during SSR no longer throws.
+- Reduced motion reuses lite mode's static fallbacks.
+- React JSX types accept `ref`, `id`, `className` and event handlers.
+
+## [0.3.0] - 2026-09-27
+
+### Added
+
+- Party crew set: Boo, Neko, Rex, Boba, Octo and Buzz.
+- One file per character with a registry (`CHARACTERS`, `SETS`, `VARIANTS`).
+
+### Changed
+
+- Rebuilt for performance: compositor-only body motion, no SVG filters, state-scoped animations, offscreen pause and lite mode.
+
+## [0.1.0] - 2026-09-27
+
+### Added
+
+- `<agent-avatar>` web component with Mochi, Byte, Orbit, Teddy, Pip and Kero, each with four states.
+
+[Unreleased]: https://github.com/zeeli-dev/avatar-ai/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/zeeli-dev/avatar-ai/releases/tag/v0.5.0
+[0.3.0]: https://github.com/zeeli-dev/avatar-ai/commits/main
+[0.1.0]: https://github.com/zeeli-dev/avatar-ai/commits/main

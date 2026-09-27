@@ -1,7 +1,28 @@
 {
-  "name": "avatar-ai",
+  "name": "@zeeli/avatars",
   "version": "0.5.0",
-  "description": "Cute animated agent avatars as a zero-dependency web component.",
+  "description": "Cute animated avatars for AI agents. One zero-dependency web component, 24 characters, four states.",
+  "keywords": [
+    "avatar",
+    "ai-agents",
+    "web-component",
+    "custom-element",
+    "animation",
+    "svg",
+    "react",
+    "status",
+    "mascot"
+  ],
+  "homepage": "https://github.com/zeeli-dev/avatar-ai#readme",
+  "bugs": {
+    "url": "https://github.com/zeeli-dev/avatar-ai/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeeli-dev/avatar-ai.git"
+  },
+  "license": "MIT",
+  "author": "Manno Beats",
   "type": "module",
   "main": "src/index.js",
   "types": "src/index.d.ts",
@@ -9,7 +30,8 @@
     ".": {
       "types": "./src/index.d.ts",
       "default": "./src/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "src"
@@ -19,7 +41,14 @@
     "./src/element.js"
   ],
   "scripts": {
-    "dev": "echo 'Docs: http://localhost:4173/docs/' && python3 -m http.server 4173"
+    "dev": "node scripts/serve.mjs",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "typecheck": "tsc -p tests/types",
+    "test": "node --test tests/*.test.js",
+    "test:browser": "playwright test",
+    "size": "node scripts/size.mjs",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm size && pnpm test:browser"
   },
   "peerDependencies": {
     "@types/react": ">=19"
@@ -28,5 +57,19 @@
     "@types/react": {
       "optional": true
     }
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.14",
+    "@playwright/test": "1.63.0",
+    "@types/react": "19.3.0",
+    "typescript": "7.0.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "packageManager": "pnpm@11.24.0",
+  "engines": {
+    "node": ">=20"
   }
 }

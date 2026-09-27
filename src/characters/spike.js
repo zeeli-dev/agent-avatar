@@ -1,4 +1,4 @@
-import { DEFS, INK, face } from '../core/parts.js';
+import { DEFS, face, INK } from '../core/parts.js';
 
 // Spiky outline over the top of the head.
 const SPIKES = (() => {

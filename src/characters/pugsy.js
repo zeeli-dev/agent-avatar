@@ -1,4 +1,4 @@
-import { DEFS, INK, face } from '../core/parts.js';
+import { DEFS, face, INK } from '../core/parts.js';
 
 // Pug in a backwards cap and gold chain. Blows bubble gum while working, deal-with-it shades when done.
 export default {

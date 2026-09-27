@@ -1,11 +1,30 @@
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 export type AvatarVariant =
-  | 'mochi' | 'byte' | 'orbit'
-  | 'teddy' | 'pip' | 'kero'
-  | 'boo' | 'neko' | 'rex' | 'boba' | 'octo' | 'buzz'
-  | 'nimbus' | 'toasty' | 'quack' | 'zorp' | 'turbo' | 'ember'
-  | 'smokey' | 'pugsy' | 'spike' | 'glitch' | 'tagz' | 'chomp';
+  | 'mochi'
+  | 'byte'
+  | 'orbit'
+  | 'teddy'
+  | 'pip'
+  | 'kero'
+  | 'boo'
+  | 'neko'
+  | 'rex'
+  | 'boba'
+  | 'octo'
+  | 'buzz'
+  | 'nimbus'
+  | 'toasty'
+  | 'quack'
+  | 'zorp'
+  | 'turbo'
+  | 'ember'
+  | 'smokey'
+  | 'pugsy'
+  | 'spike'
+  | 'glitch'
+  | 'tagz'
+  | 'chomp';
 export type AvatarState = 'idle' | 'working' | 'attention' | 'done';
 
 export type AvatarSet = 'abstract' | 'characters' | 'party' | 'wild' | 'edgy';
@@ -36,7 +55,9 @@ export interface AgentAvatarProps {
 }
 
 declare global {
-  interface HTMLElementTagNameMap { 'agent-avatar': AgentAvatar }
+  interface HTMLElementTagNameMap {
+    'agent-avatar': AgentAvatar;
+  }
 }
 
 declare module 'react' {

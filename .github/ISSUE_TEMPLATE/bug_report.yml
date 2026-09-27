@@ -1,0 +1,31 @@
+name: Bug report
+description: Something renders wrong, animates wrong, or throws.
+labels: [bug]
+body:
+  - type: input
+    id: variant
+    attributes:
+      label: Variant and state
+      placeholder: rex / working
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you expected, what you saw. Screenshots or a screen recording help a lot.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      render: html
+      placeholder: <agent-avatar variant="rex" state="working" size="28"></agent-avatar>
+  - type: input
+    id: env
+    attributes:
+      label: Browser, OS, framework
+      placeholder: Chrome 140, macOS 16, React 19
+    validations:
+      required: true

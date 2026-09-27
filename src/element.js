@@ -9,9 +9,9 @@
 // - size <= 32 enables lite mode (see core/styles.js).
 // - Stylesheets are shared per variant and markup is cloned from a cached <template>.
 
+import { CHARACTERS, VARIANTS } from './characters/index.js';
 import { BADGES, SPARKS, STATES } from './core/parts.js';
 import { BASE } from './core/styles.js';
-import { CHARACTERS, VARIANTS } from './characters/index.js';
 
 const LITE_MAX = 32;
 

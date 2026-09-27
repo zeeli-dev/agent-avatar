@@ -1,4 +1,4 @@
-import { DEFS, INK, eye } from '../core/parts.js';
+import { DEFS, eye, INK } from '../core/parts.js';
 
 // Rocket snail. Straps on a booster while working, eyestalks stretch for attention.
 export default {

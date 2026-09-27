@@ -45,5 +45,6 @@ export const BADGES = `
   <div class="badge b-attention"><svg viewBox="0 0 12 12"><rect x="5" y="1.6" width="2" height="6" rx="1" fill="#fff"/><circle cx="6" cy="10" r="1.2" fill="#fff"/></svg></div>
   <div class="badge b-done"><svg viewBox="0 0 12 12"><path d="M3 6.3l2 2 4-4.3" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
 // Star is SVG content, not clip-path: an animated clip-path element re-rasterizes every frame.
-const STAR = '<i class="spk"><svg viewBox="-6 -6 12 12"><path d="M0-6C.9-1.1 1.1-.9 6 0 1.1.9.9 1.1 0 6-.9 1.1-1.1.9-6 0-1.1-.9-.9-1.1 0-6Z"/></svg></i>';
+const STAR =
+  '<i class="spk"><svg viewBox="-6 -6 12 12"><path d="M0-6C.9-1.1 1.1-.9 6 0 1.1.9.9 1.1 0 6-.9 1.1-1.1.9-6 0-1.1-.9-.9-1.1 0-6Z"/></svg></i>';
 export const SPARKS = STAR.repeat(3);

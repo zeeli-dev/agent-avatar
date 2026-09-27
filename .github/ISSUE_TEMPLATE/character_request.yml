@@ -1,0 +1,27 @@
+name: Character idea
+description: Pitch a new character and how it acts in each state.
+labels: [character]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Name and concept
+      placeholder: Mango, a sleepy parrot barista
+    validations:
+      required: true
+  - type: textarea
+    id: states
+    attributes:
+      label: Behavior per state
+      value: |
+        - idle:
+        - working:
+        - attention:
+        - done:
+    validations:
+      required: true
+  - type: dropdown
+    id: set
+    attributes:
+      label: Set
+      options: [Abstract, Characters, Party crew, Wild bunch, Edgy crew, New set]

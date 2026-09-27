@@ -3,136 +3,18 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Avatar AI</title>
+<title>Zeeli Avatars</title>
 <meta name="description" content="Cute animated agent avatars as one zero-dependency web component." />
 <link rel="icon" href="data:," />
-<script type="module" src="../src/index.js"></script>
-<style>
-  :root {
-    --bg: #0b0c0e; --side: #07080a; --card: #0f1113; --raised: #121316; --line: #1f2226; --line-strong: #2a2d32;
-    --ink: #f0f2f4; --muted: #94999f; --faint: #6b7076; --accent: #f45120;
-    --stage: radial-gradient(120% 90% at 50% 20%, #1a1c22 0%, #0f1113 60%);
-    --code-bg: #0f1113;
-    --tk-c: #6b7076; --tk-s: #9ad18b; --tk-k: #ff7a59; --tk-t: #7cc4ff; --tk-a: #c9a0ff; --tk-n: #ffcb6b; --tk-f: #ffd580; --tk-p: #94999f;
-    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
-    --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-    color-scheme: dark;
-  }
-  [data-theme="light"] {
-    --bg: #f7f6f3; --side: #f1efeb; --card: #fcfbfa; --raised: #fff; --line: #e6e3de; --line-strong: #d6d2cb;
-    --ink: #101419; --muted: #5f646b; --faint: #8a8f96;
-    --stage: radial-gradient(120% 90% at 50% 20%, #ffffff 0%, #f1efeb 70%);
-    --code-bg: #f1efeb;
-    --tk-c: #8a8f96; --tk-s: #2f7d32; --tk-k: #c2410c; --tk-t: #1d63c9; --tk-a: #7c3aed; --tk-n: #a15c00; --tk-f: #9a5b00; --tk-p: #6b7078;
-    color-scheme: light;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.55 var(--sans); }
-  a { color: inherit; }
-  code, pre { font-family: var(--mono); font-size: 12px; }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
-
-  .layout { display: grid; grid-template-columns: 248px minmax(0, 1fr); min-height: 100vh; }
-
-  /* Sidebar */
-  .side { position: sticky; top: 0; height: 100vh; overflow-y: auto; background: var(--side); border-right: 1px solid var(--line); padding: 20px 12px 32px; }
-  .brand { display: flex; align-items: center; gap: 10px; padding: 0 8px 16px; text-decoration: none; }
-  .brand b { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
-  .brand span { font: 11px var(--mono); color: var(--faint); margin-left: auto; }
-  .filter { width: 100%; margin: 0 0 16px; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--raised); color: var(--ink); font: inherit; font-size: 13px; }
-  .filter::placeholder { color: var(--faint); }
-  .side h4 { margin: 18px 8px 6px; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--faint); }
-  .side a.link { display: flex; align-items: center; gap: 8px; padding: 5px 8px; border-radius: 7px; text-decoration: none; color: var(--muted); font-size: 13px; }
-  .side a.link:hover { color: var(--ink); background: var(--raised); }
-  .side a.link[aria-current="true"] { color: var(--ink); background: var(--line); }
-  .side a.sub { padding-left: 10px; }
-  .side a.sub agent-avatar { flex: none; }
-  .side .set { color: var(--ink); font-weight: 500; }
-
-  /* Top bar */
-  .top { position: sticky; top: 0; z-index: 5; display: flex; gap: 8px; align-items: center; justify-content: flex-end; padding: 12px 32px; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
-  .top .label { font-size: 12px; color: var(--faint); margin-right: 4px; }
-  .seg { display: inline-flex; background: var(--raised); border: 1px solid var(--line); border-radius: 10px; padding: 3px; }
-  .seg button { all: unset; cursor: pointer; padding: 5px 11px; border-radius: 7px; font-size: 12px; font-weight: 500; color: var(--muted); white-space: nowrap; }
-  .seg button[aria-pressed="true"] { background: var(--line); color: var(--ink); }
-  .seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-
-  /* Content */
-  main { padding: 40px 32px 120px; max-width: 1120px; }
-  section { margin-bottom: 72px; }
-  h1 { font-size: 34px; font-weight: 600; letter-spacing: -0.025em; margin: 0 0 8px; }
-  h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.015em; margin: 0 0 6px; }
-  h3 { font-size: 15px; font-weight: 600; margin: 28px 0 8px; }
-  .lead { color: var(--muted); font-size: 16px; max-width: 620px; margin: 0 0 24px; }
-  .sub-lead { color: var(--muted); margin: 0 0 20px; max-width: 620px; }
-  .eyebrow { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin-bottom: 10px; }
-  .hero-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-
-  pre { position: relative; margin: 0 0 12px; padding: 14px 72px 14px 16px; background: var(--code-bg); border: 1px solid var(--line); border-radius: 10px; overflow-x: auto; line-height: 1.6; }
-  pre .copy { position: absolute; top: 8px; right: 8px; cursor: pointer; font: 500 11px var(--sans); color: var(--muted); padding: 3px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--raised); }
-  pre .copy:hover { color: var(--ink); }
-  .tk-c { color: var(--tk-c); font-style: italic; } .tk-s { color: var(--tk-s); } .tk-k { color: var(--tk-k); }
-  .tk-t { color: var(--tk-t); } .tk-a { color: var(--tk-a); } .tk-n { color: var(--tk-n); } .tk-f { color: var(--tk-f); } .tk-p { color: var(--tk-p); }
-  :not(pre) > code { background: var(--raised); border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; }
-
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { font-weight: 500; color: var(--faint); font-size: 12px; }
-  td:first-child { white-space: nowrap; }
-
-  /* Playground */
-  .play { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 16px; }
-  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
-  .stage { background: var(--stage); display: grid; place-items: center; min-height: 340px; border-radius: 16px; border: 1px solid var(--line); position: relative; overflow: hidden; }
-  .controls { padding: 18px; display: grid; gap: 16px; align-content: start; }
-  .field > span { display: block; font-size: 12px; color: var(--faint); margin-bottom: 6px; }
-  .picker { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
-  .picker button { all: unset; cursor: pointer; display: grid; place-items: center; aspect-ratio: 1; border-radius: 10px; border: 1px solid var(--line); background: var(--raised); }
-  .picker button[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
-  .picker button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-  input[type="range"] { width: 100%; accent-color: var(--accent); }
-  .tree { padding: 8px; }
-  .row { display: flex; align-items: center; gap: 12px; padding: 7px 10px; border-radius: 10px; }
-  .row .n { font-weight: 500; }
-  .row .s { margin-left: auto; font-size: 12px; color: var(--faint); }
-  .row.child { padding-left: 34px; }
-
-  /* Gallery */
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; scroll-margin-top: 80px; }
-  .card .stage { border: 0; border-radius: 0; border-bottom: 1px solid var(--line); min-height: 220px; }
-  .card .tag { position: absolute; top: 12px; left: 12px; font: 500 11px var(--mono); color: var(--faint); }
-  .card .stage .try { position: absolute; top: 8px; right: 8px; cursor: pointer; font-size: 12px; color: var(--muted); padding: 4px 9px; border-radius: 7px; border: 1px solid var(--line); background: var(--raised); opacity: 0; transition: opacity .15s; }
-  .card:hover .try, .card .try:focus-visible { opacity: 1; }
-  .card .body { padding: 14px 16px 16px; }
-  .card h3 { margin: 0; }
-  .card p { margin: 4px 0 14px; color: var(--muted); font-size: 13px; }
-  .states { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-  .states figure { margin: 0; display: grid; justify-items: center; gap: 2px; padding: 8px 0 6px; background: var(--raised); border: 1px solid var(--line); border-radius: 10px; }
-  .states figcaption { font-size: 11px; color: var(--faint); }
-
-  @media (max-width: 900px) {
-    .layout { grid-template-columns: 1fr; }
-    .side { position: static; height: auto; max-height: none; border-right: 0; border-bottom: 1px solid var(--line); }
-    .side nav { display: none; }
-    .side.open nav { display: block; }
-    .top { padding: 10px 16px; flex-wrap: wrap; justify-content: flex-start; }
-    main { padding: 28px 16px 80px; }
-    .play { grid-template-columns: 1fr; }
-    .picker { grid-template-columns: repeat(6, 1fr); }
-  }
-  .menu { display: none; cursor: pointer; font: 500 12px var(--sans); color: var(--muted); padding: 5px 10px; border: 1px solid var(--line); border-radius: 7px; background: var(--raised); margin-left: auto; }
-  @media (max-width: 900px) { .menu { display: inline-block; } }
-</style>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 <div class="layout">
   <aside class="side" id="side">
     <div class="brand">
       <agent-avatar variant="mochi" state="idle" size="26"></agent-avatar>
-      <b>Avatar AI</b><span>v0.5.0</span>
-      <button class="menu" id="menu" aria-expanded="false" aria-controls="side">Menu</button>
+      <b>Zeeli Avatars</b><span>v0.5.0</span>
+      <button type="button" class="menu" id="menu" aria-expanded="false" aria-controls="side">Menu</button>
     </div>
     <nav aria-label="Documentation">
       <input class="filter" id="filter" type="search" placeholder="Filter characters" aria-label="Filter characters" />
@@ -154,31 +36,31 @@
     <div class="top">
       <span class="label">Gallery state</span>
       <div class="seg" id="state">
-        <button aria-pressed="true" data-v="cycle">Cycle</button>
-        <button data-v="idle">Idle</button>
-        <button data-v="working">Working</button>
-        <button data-v="attention">Needs input</button>
-        <button data-v="done">Done</button>
+        <button type="button" aria-pressed="true" data-v="cycle">Cycle</button>
+        <button type="button" data-v="idle">Idle</button>
+        <button type="button" data-v="working">Working</button>
+        <button type="button" data-v="attention">Needs input</button>
+        <button type="button" data-v="done">Done</button>
       </div>
       <div class="seg" id="theme">
-        <button aria-pressed="true" data-v="dark">Dark</button>
-        <button data-v="light">Light</button>
+        <button type="button" aria-pressed="true" data-v="dark">Dark</button>
+        <button type="button" data-v="light">Light</button>
       </div>
     </div>
 
     <main>
       <section id="overview">
         <div class="eyebrow">Agent avatars</div>
-        <h1>Avatar AI</h1>
+        <h1>Zeeli Avatars</h1>
         <p class="lead">Animated avatars for agents and sub-agents. <span id="count"></span> characters, four states each, in a single web component with no dependencies.</p>
         <div class="hero-row" id="hero-row"></div>
       </section>
 
       <section id="install">
         <h2>Install</h2>
-        <p class="sub-lead">Add the package from a local path or your workspace, then import it once. Importing it registers the <code>&lt;agent-avatar&gt;</code> element.</p>
-        <pre><code data-lang="sh">pnpm add ../libraries-and-packages/avatar-ai</code></pre>
-        <pre><code data-lang="js">import 'avatar-ai';</code></pre>
+        <p class="sub-lead">Install from npm, then import it once. Importing it registers the <code>&lt;agent-avatar&gt;</code> element.</p>
+        <pre><code data-lang="sh">pnpm add @zeeli/avatars</code></pre>
+        <pre><code data-lang="js">import '@zeeli/avatars';</code></pre>
       </section>
 
       <section id="usage">
@@ -186,13 +68,13 @@
         <h3>HTML</h3>
         <pre><code data-lang="html">&lt;agent-avatar variant="teddy" state="working" size="40"&gt;&lt;/agent-avatar&gt;</code></pre>
         <h3>React 19</h3>
-        <pre><code data-lang="js">import 'avatar-ai';
+        <pre><code data-lang="js">import '@zeeli/avatars';
 
 export function AgentRow({ agent }) {
   return &lt;agent-avatar variant={agent.avatar} state={agent.status} size={28} /&gt;;
 }</code></pre>
         <h3>Reading the catalog</h3>
-        <pre><code data-lang="js">import { CHARACTERS, SETS, STATES, VARIANTS } from 'avatar-ai';
+        <pre><code data-lang="js">import { CHARACTERS, SETS, STATES, VARIANTS } from '@zeeli/avatars';
 
 VARIANTS;             // ['mochi', 'byte', ...]
 CHARACTERS.rex.title; // 'Rex'
@@ -208,10 +90,10 @@ SETS.map((s) => s.title);</code></pre>
             <div class="field"><span>Character</span><div class="picker" id="pg-variant"></div></div>
             <div class="field"><span>State</span>
               <div class="seg" id="pg-state">
-                <button data-v="idle">Idle</button>
-                <button aria-pressed="true" data-v="working">Working</button>
-                <button data-v="attention">Needs input</button>
-                <button data-v="done">Done</button>
+                <button type="button" data-v="idle">Idle</button>
+                <button type="button" aria-pressed="true" data-v="working">Working</button>
+                <button type="button" data-v="attention">Needs input</button>
+                <button type="button" data-v="done">Done</button>
               </div>
             </div>
             <label class="field"><span>Size <b id="pg-size-out">180</b>px</span><input id="pg-size" type="range" min="16" max="220" value="180" /></label>
@@ -279,152 +161,6 @@ SETS.map((s) => s.title);</code></pre>
   </div>
 </div>
 
-<script type="module">
-  import { CHARACTERS, SETS, VARIANTS } from '../src/index.js';
-
-  const STATE_LABEL = { idle: 'Idle', working: 'Working', attention: 'Needs input', done: 'Done' };
-  const $ = (id) => document.getElementById(id);
-  const chars = Object.values(CHARACTERS);
-
-  // Sidebar gallery links + gallery sections, both from the registry.
-  $('nav-gallery').innerHTML = SETS.map((set) => `
-    <a class="link set" href="#set-${set.id}">${set.title}</a>
-    ${chars.filter((c) => c.set === set.id).map((c) => `
-      <a class="link sub" href="#${c.name}" data-name="${c.name} ${c.title.toLowerCase()}">
-        <agent-avatar variant="${c.name}" size="18"></agent-avatar>${c.title}</a>`).join('')}`).join('');
-
-  $('gallery').innerHTML = SETS.map((set) => `
-    <section id="set-${set.id}">
-      <h2>${set.title}</h2>
-      <div class="grid">${chars.filter((c) => c.set === set.id).map((c) => `
-        <article class="card" id="${c.name}">
-          <div class="stage">
-            <span class="tag">${c.name}</span>
-            <button class="try" data-try="${c.name}">Open in playground</button>
-            <agent-avatar class="hero" variant="${c.name}" size="150"></agent-avatar>
-          </div>
-          <div class="body">
-            <h3>${c.title}</h3><p>${c.description}</p>
-            <div class="states">${Object.entries(STATE_LABEL).map(([s, l]) => `
-              <figure><agent-avatar variant="${c.name}" state="${s}" size="48"></agent-avatar><figcaption>${l}</figcaption></figure>`).join('')}
-            </div>
-          </div>
-        </article>`).join('')}
-      </div>
-    </section>`).join('');
-
-  $('hero-row').innerHTML = VARIANTS.map((v, i) =>
-    `<agent-avatar variant="${v}" state="${['idle', 'working', 'attention', 'done'][i % 4]}" size="44"></agent-avatar>`).join('');
-  $('api-variants').innerHTML = VARIANTS.map((v) => `<code>${v}</code>`).join(' · ');
-
-  // Tiny syntax highlighter for the docs' own snippets (html, js/jsx, sh). No dependency.
-  const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  const GRAMMAR = {
-    js: /(?<c>\/\/[^\n]*)|(?<s>'[^'\n]*'|"[^"\n]*"|`[^`]*`)|(?<t><\/?[A-Za-z][\w-]*|\/?(?<!=)>)|(?<k>\b(?:import|export|from|function|return|const|let|new|if|else)\b)|(?<a>\b[a-z][\w-]*(?==))|(?<f>\b[A-Za-z_]\w*(?=\())|(?<n>\b\d+(?:\.\d+)?\b)|(?<p>=>|[{}()[\]=;,.])/g,
-    sh: /(?<c>#[^\n]*)|(?<s>'[^'\n]*'|"[^"\n]*")|(?<k>^\s*[\w.-]+)|(?<a>\s--?[\w-]+)/gm,
-  };
-  GRAMMAR.html = GRAMMAR.js;
-  const highlight = (code) => {
-    const re = GRAMMAR[code.dataset.lang];
-    if (!re) return;
-    const src = code.textContent;
-    let out = '';
-    let last = 0;
-    for (const m of src.matchAll(re)) {
-      const kind = Object.keys(m.groups).find((g) => m.groups[g] !== undefined);
-      out += esc(src.slice(last, m.index)) + `<span class="tk-${kind}">${esc(m[0])}</span>`;
-      last = m.index + m[0].length;
-    }
-    code.innerHTML = out + esc(src.slice(last));
-  };
-  document.querySelectorAll('code[data-lang]').forEach(highlight);
-  $('count').textContent = VARIANTS.length;
-
-  // Segmented controls.
-  const seg = (el, fn) => el.addEventListener('click', (e) => {
-    const b = e.target.closest('button');
-    if (!b) return;
-    el.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x === b));
-    fn(b.dataset.v);
-  });
-
-  // Gallery state: cycle or fixed.
-  const order = Object.keys(STATE_LABEL);
-  let mode = 'cycle';
-  let tick = 0;
-  const setGallery = (s) => document.querySelectorAll('.hero').forEach((el) => el.setAttribute('state', s));
-  setGallery('idle');
-  setInterval(() => mode === 'cycle' && setGallery(order[++tick % order.length]), 2600);
-  seg($('state'), (v) => { mode = v; if (v !== 'cycle') setGallery(v); });
-  seg($('theme'), (v) => (document.documentElement.dataset.theme = v));
-
-  // Playground.
-  const pg = { variant: 'mochi', state: 'working', size: 180 };
-  const TREE = [['Orchestrator', 'working'], ['Planner', 'done'], ['Coder', 'working'], ['Reviewer', 'attention'], ['Tester', 'idle']];
-  $('pg-variant').innerHTML = VARIANTS.map((v) =>
-    `<button data-v="${v}" aria-pressed="${v === pg.variant}" title="${CHARACTERS[v].title}" aria-label="${CHARACTERS[v].title}"><agent-avatar variant="${v}" size="32"></agent-avatar></button>`).join('');
-  const renderPg = () => {
-    const el = $('pg');
-    el.setAttribute('variant', pg.variant);
-    el.setAttribute('state', pg.state);
-    el.setAttribute('size', pg.size);
-    $('pg-size-out').textContent = pg.size;
-    $('pg-code').textContent = `<agent-avatar variant="${pg.variant}" state="${pg.state}" size="${pg.size}"></agent-avatar>`;
-    highlight($('pg-code'));
-    $('pg-tree').innerHTML = TREE.map(([n, s], i) =>
-      `<div class="row${i ? ' child' : ''}"><agent-avatar variant="${pg.variant}" state="${s}" size="28"></agent-avatar><span class="n">${n}</span><span class="s">${STATE_LABEL[s]}</span></div>`).join('');
-  };
-  seg($('pg-variant'), (v) => { pg.variant = v; renderPg(); });
-  seg($('pg-state'), (v) => { pg.state = v; renderPg(); });
-  $('pg-size').addEventListener('input', (e) => { pg.size = +e.target.value; renderPg(); });
-  renderPg();
-
-  document.addEventListener('click', (e) => {
-    const t = e.target.closest('[data-try]');
-    if (!t) return;
-    pg.variant = t.dataset.try;
-    $('pg-variant').querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.v === pg.variant));
-    renderPg();
-    $('playground').scrollIntoView();
-  });
-
-  // Copy buttons on code blocks.
-  document.querySelectorAll('pre').forEach((pre) => {
-    const b = Object.assign(document.createElement('button'), { className: 'copy', textContent: 'Copy' });
-    b.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(pre.querySelector('code').textContent);
-        b.textContent = 'Copied';
-      } catch {
-        b.textContent = 'Select to copy';
-      }
-      setTimeout(() => (b.textContent = 'Copy'), 1400);
-    });
-    pre.append(b);
-  });
-
-  // Sidebar filter.
-  $('filter').addEventListener('input', (e) => {
-    const q = e.target.value.trim().toLowerCase();
-    document.querySelectorAll('#nav-gallery .sub').forEach((a) => (a.hidden = q && !a.dataset.name.includes(q)));
-  });
-
-  // Mobile menu.
-  $('menu').addEventListener('click', () => {
-    const open = $('side').classList.toggle('open');
-    $('menu').setAttribute('aria-expanded', open);
-  });
-
-  // Scroll spy: highlight the section in view.
-  const links = new Map([...document.querySelectorAll('.side a.link')].map((a) => [a.getAttribute('href').slice(1), a]));
-  const spy = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (!e.isIntersecting) continue;
-      links.forEach((a) => a.removeAttribute('aria-current'));
-      links.get(e.target.id)?.setAttribute('aria-current', 'true');
-    }
-  }, { rootMargin: '-30% 0px -65% 0px' });
-  document.querySelectorAll('main section[id], .card[id]').forEach((el) => spy.observe(el));
-</script>
+<script type="module" src="app.js"></script>
 </body>
 </html>

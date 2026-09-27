@@ -1,4 +1,4 @@
-import { DEFS, INK, eye } from '../core/parts.js';
+import { DEFS, eye, INK } from '../core/parts.js';
 
 // Frog detective. Sweeps a magnifying glass while working, hops for attention.
 export default {
