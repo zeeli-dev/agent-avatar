@@ -1,0 +1,16 @@
+{
+  "name": "avatar-ai",
+  "version": "0.4.0",
+  "description": "Cute animated agent avatars as a zero-dependency web component.",
+  "type": "module",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "exports": {
+    ".": { "types": "./src/index.d.ts", "default": "./src/index.js" }
+  },
+  "files": ["src"],
+  "sideEffects": ["./src/index.js", "./src/element.js"],
+  "scripts": {
+    "dev": "echo 'Docs: http://localhost:4173/docs/' && python3 -m http.server 4173"
+  }
+}
