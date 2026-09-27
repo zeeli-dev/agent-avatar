@@ -17,13 +17,20 @@ import quack from './quack.js';
 import zorp from './zorp.js';
 import turbo from './turbo.js';
 import ember from './ember.js';
+import smokey from './smokey.js';
+import pugsy from './pugsy.js';
+import spike from './spike.js';
+import glitch from './glitch.js';
+import tagz from './tagz.js';
+import chomp from './chomp.js';
 
 export const SETS = [
   { id: 'abstract', title: 'Abstract' },
   { id: 'characters', title: 'Characters' },
   { id: 'party', title: 'Party crew' },
   { id: 'wild', title: 'Wild bunch' },
+  { id: 'edgy', title: 'Edgy crew' },
 ];
 
-export const CHARACTERS = Object.fromEntries([mochi, byte, orbit, teddy, pip, kero, boo, neko, rex, boba, octo, buzz, nimbus, toasty, quack, zorp, turbo, ember].map((c) => [c.name, c]));
+export const CHARACTERS = Object.fromEntries([mochi, byte, orbit, teddy, pip, kero, boo, neko, rex, boba, octo, buzz, nimbus, toasty, quack, zorp, turbo, ember, smokey, pugsy, spike, glitch, tagz, chomp].map((c) => [c.name, c]));
 export const VARIANTS = Object.keys(CHARACTERS);

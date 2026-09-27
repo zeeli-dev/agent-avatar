@@ -1,6 +1,6 @@
 # avatar-ai
 
-Cute animated avatars for agents and sub-agents. Eighteen characters, four states each, in one web component with no dependencies.
+Cute animated avatars for agents and sub-agents. Twenty-four characters, four states each, in one web component with no dependencies.
 
 ```html
 <script type="module" src="avatar-ai/src/index.js"></script>
@@ -27,7 +27,7 @@ Open http://localhost:4173/docs/ for the playground, the full gallery, the API a
 
 | Attribute | Values | Default |
 | --- | --- | --- |
-| `variant` | `mochi` `byte` `orbit` · `teddy` `pip` `kero` · `boo` `neko` `rex` `boba` `octo` `buzz` · `nimbus` `toasty` `quack` `zorp` `turbo` `ember` | `mochi` |
+| `variant` | `mochi` `byte` `orbit` · `teddy` `pip` `kero` · `boo` `neko` `rex` `boba` `octo` `buzz` · `nimbus` `toasty` `quack` `zorp` `turbo` `ember` · `smokey` `pugsy` `spike` `glitch` `tagz` `chomp` | `mochi` |
 | `state` | `idle` `working` `attention` `done` | `idle` |
 | `size` | px number or CSS length. Numbers at 32 or below turn on lite mode. | `96px` |
 | `label` | accessible label | `Agent <state>` |

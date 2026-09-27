@@ -2,10 +2,11 @@ export type AvatarVariant =
   | 'mochi' | 'byte' | 'orbit'
   | 'teddy' | 'pip' | 'kero'
   | 'boo' | 'neko' | 'rex' | 'boba' | 'octo' | 'buzz'
-  | 'nimbus' | 'toasty' | 'quack' | 'zorp' | 'turbo' | 'ember';
+  | 'nimbus' | 'toasty' | 'quack' | 'zorp' | 'turbo' | 'ember'
+  | 'smokey' | 'pugsy' | 'spike' | 'glitch' | 'tagz' | 'chomp';
 export type AvatarState = 'idle' | 'working' | 'attention' | 'done';
 
-export type AvatarSet = 'abstract' | 'characters' | 'party' | 'wild';
+export type AvatarSet = 'abstract' | 'characters' | 'party' | 'wild' | 'edgy';
 
 export interface Character {
   name: AvatarVariant;
