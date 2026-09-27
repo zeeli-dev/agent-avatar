@@ -4,6 +4,10 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-09-27
+
+First public release, published to npm as `agent-avatar`.
+
 ### Added
 
 - Open-source release as `agent-avatar` under the MIT license. The project is now called Agent Avatar, matching the `<agent-avatar>` tag.
@@ -16,6 +20,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 - The docs page is split into `index.html`, `app.js` and `styles.css`.
 - `pnpm dev` runs a zero-dependency Node server instead of Python.
+- Tooling on the latest releases: pnpm 12, Biome 2.5, Playwright 1.63, TypeScript 7, Wrangler 4.141, and v7 of the checkout, setup-node and upload-artifact actions. CI tracks the current Node LTS.
+- Node 22 or newer is required for development.
 
 ## [0.5.0] - 2026-09-27
 
@@ -50,7 +56,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 - `<agent-avatar>` web component with Mochi, Byte, Orbit, Teddy, Pip and Kero, each with four states.
 
-[Unreleased]: https://github.com/zeeli-dev/agent-avatar/compare/v0.5.0...HEAD
-[0.5.0]: https://github.com/zeeli-dev/agent-avatar/releases/tag/v0.5.0
+[Unreleased]: https://github.com/zeeli-dev/agent-avatar/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/zeeli-dev/agent-avatar/releases/tag/v0.6.0
+[0.5.0]: https://github.com/zeeli-dev/agent-avatar/commits/main
 [0.3.0]: https://github.com/zeeli-dev/agent-avatar/commits/main
 [0.1.0]: https://github.com/zeeli-dev/agent-avatar/commits/main

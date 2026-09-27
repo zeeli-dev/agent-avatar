@@ -1,6 +1,6 @@
 {
   "name": "agent-avatar",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Cute animated avatars for AI agents. One zero-dependency web component, 24 characters, four states.",
   "keywords": [
     "avatar",
@@ -73,8 +73,8 @@
     "access": "public",
     "provenance": true
   },
-  "packageManager": "pnpm@11.24.0",
+  "packageManager": "pnpm@12.6.0",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   }
 }
