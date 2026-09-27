@@ -25,6 +25,10 @@ There is no build step. The docs page imports `src/` directly, so a reload shows
 | `pnpm size` | Gzipped size of `src/` against the budget |
 | `pnpm test:browser` | Playwright: element behavior, every character in every state, and the docs page |
 | `pnpm check` | All of the above. CI runs the same steps. |
+| `pnpm media` | Regenerate README GIFs, set strips and the social preview (needs ffmpeg) |
+| `pnpm icons` | Regenerate favicons from `docs/favicon.svg` |
+| `pnpm build:site` | Assemble the docs site into `dist/` |
+| `pnpm deploy:site` | Build and deploy the docs to https://avatars.zeeli.dev (Cloudflare Workers static assets) |
 
 ## Project layout
 
@@ -36,18 +40,19 @@ src/
   core/parts.js       shared face, gradients, badges, sparkles
   core/styles.js      shared CSS: palette, badges, keyframes, lite mode
   characters/         one file per character, plus index.js (the registry)
-docs/                 docs site and playground (index.html, app.js, styles.css)
+docs/                 docs site: index.html, app.js, styles.css, favicons, 404 page, _headers
 tests/                node:test suites, type tests, Playwright specs
-scripts/              dev server, size budget, preview image
+scripts/              dev server, size budget, site build, README media and favicons
+wrangler.jsonc        docs site deployment (Cloudflare Workers static assets)
 ```
 
 ## Adding a character
 
 1. Copy a file in `src/characters/` that is close to your idea. Set `name`, `title`, `set`, `description`, `svg` and `css`.
 2. Import it in `src/characters/index.js` and add it to the list.
-3. Add the name to `AvatarVariant` in `src/index.d.ts` and to the README tables.
+3. Add the name to `AvatarVariant` in `src/index.d.ts` and to the `variant` row of the README API table.
 4. Run `pnpm dev` and check all four states at 28px and at 120px, in dark and light themes.
-5. Run `pnpm check`. Regenerate the banner with `node scripts/preview.mjs` if the character should appear in it.
+5. Run `pnpm check`, then `pnpm media` to regenerate the README images.
 
 Drawing rules, most of which `pnpm test` enforces:
 

@@ -8,7 +8,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 - Open-source release as `@zeeli/avatars` under the MIT license.
 - Biome lint and format, type tests, registry tests, a size budget and Playwright browser tests.
-- CI, npm release with provenance, and GitHub Pages docs workflows.
+- CI and npm release with provenance workflows.
+- Docs site at https://avatars.zeeli.dev on Cloudflare Workers, with favicons, social preview, a 404 page and security headers.
 - Contributing guide, code of conduct, security policy, and issue and pull request templates.
 
 ### Changed
@@ -49,7 +50,7 @@ All notable changes to this project are documented here. The format follows [Kee
 
 - `<agent-avatar>` web component with Mochi, Byte, Orbit, Teddy, Pip and Kero, each with four states.
 
-[Unreleased]: https://github.com/zeeli-dev/avatar-ai/compare/v0.5.0...HEAD
-[0.5.0]: https://github.com/zeeli-dev/avatar-ai/releases/tag/v0.5.0
-[0.3.0]: https://github.com/zeeli-dev/avatar-ai/commits/main
-[0.1.0]: https://github.com/zeeli-dev/avatar-ai/commits/main
+[Unreleased]: https://github.com/zeeli-dev/avatars/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/zeeli-dev/avatars/releases/tag/v0.5.0
+[0.3.0]: https://github.com/zeeli-dev/avatars/commits/main
+[0.1.0]: https://github.com/zeeli-dev/avatars/commits/main

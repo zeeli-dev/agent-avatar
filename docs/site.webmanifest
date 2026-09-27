@@ -1,0 +1,11 @@
+{
+  "name": "Zeeli Avatars",
+  "short_name": "Avatars",
+  "icons": [
+    { "src": "icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "theme_color": "#0b0c0e",
+  "background_color": "#0b0c0e",
+  "display": "standalone"
+}

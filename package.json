@@ -13,13 +13,13 @@
     "status",
     "mascot"
   ],
-  "homepage": "https://github.com/zeeli-dev/avatar-ai#readme",
+  "homepage": "https://avatars.zeeli.dev",
   "bugs": {
-    "url": "https://github.com/zeeli-dev/avatar-ai/issues"
+    "url": "https://github.com/zeeli-dev/avatars/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zeeli-dev/avatar-ai.git"
+    "url": "git+https://github.com/zeeli-dev/avatars.git"
   },
   "license": "MIT",
   "author": "Manno Beats",
@@ -48,7 +48,11 @@
     "test": "node --test tests/*.test.js",
     "test:browser": "playwright test",
     "size": "node scripts/size.mjs",
-    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm size && pnpm test:browser"
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm size && pnpm test:browser",
+    "build:site": "node scripts/build-site.mjs",
+    "deploy:site": "pnpm build:site && wrangler deploy",
+    "media": "node scripts/media.mjs",
+    "icons": "node scripts/icons.mjs"
   },
   "peerDependencies": {
     "@types/react": ">=19"
@@ -62,7 +66,8 @@
     "@biomejs/biome": "2.5.14",
     "@playwright/test": "1.63.0",
     "@types/react": "19.3.0",
-    "typescript": "7.0.2"
+    "typescript": "7.0.2",
+    "wrangler": "4.141.0"
   },
   "publishConfig": {
     "access": "public",
