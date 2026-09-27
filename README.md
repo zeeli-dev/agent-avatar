@@ -1,23 +1,23 @@
 <div align="center">
 
-# Zeeli Avatars
+# Agent Avatar
 
-**Cute animated avatars for AI agents.** One zero-dependency web component, 24 characters, four states.
+**Cute animated avatars for AI agents.** One zero-dependency web component, 24 characters, four states. By [Zeeli](https://zeeli.dev).
 
-[![CI](https://github.com/zeeli-dev/avatars/actions/workflows/ci.yml/badge.svg)](https://github.com/zeeli-dev/avatars/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/@zeeli/avatars?color=f45120)](https://www.npmjs.com/package/@zeeli/avatars)
+[![CI](https://github.com/zeeli-dev/agent-avatar/actions/workflows/ci.yml/badge.svg)](https://github.com/zeeli-dev/agent-avatar/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/agent-avatar?color=f45120)](https://www.npmjs.com/package/agent-avatar)
 [![gzip size](https://img.shields.io/badge/gzip-22%20kB-6cb17b)](scripts/size.mjs)
 [![license](https://img.shields.io/badge/license-MIT-94999f)](LICENSE)
 
 [Docs and playground](https://avatars.zeeli.dev) · [Characters](#characters) · [API](#api) · [Contributing](CONTRIBUTING.md)
 
-<img src="docs/assets/hero.gif" alt="All 24 Zeeli Avatars characters animating: idle, working, needing input and done" width="100%" />
+<img src="docs/assets/hero.gif" alt="All 24 Agent Avatar characters animating: idle, working, needing input and done" width="100%" />
 
 </div>
 
 ## Why
 
-Agent tools show a lot of status: this sub-agent is thinking, that one needs approval, another just finished. Zeeli Avatars turns that status into a small character that bounces while it works, waves for your attention and celebrates when it is done. It reads at 16px in a sidebar and holds up at 200px in a hero.
+Agent tools show a lot of status: this sub-agent is thinking, that one needs approval, another just finished. Agent Avatar turns that status into a small character that bounces while it works, waves for your attention and celebrates when it is done. It reads at 16px in a sidebar and holds up at 200px in a hero.
 
 - **One tag, any framework.** A native custom element: plain HTML, React 19, Vue, Svelte, Solid, Angular.
 - **Zero dependencies, 22 kB gzipped** for all 24 characters.
@@ -28,7 +28,7 @@ Agent tools show a lot of status: this sub-agent is thinking, that one needs app
 ## Install
 
 ```sh
-pnpm add @zeeli/avatars    # or npm i / yarn add / bun add
+pnpm add agent-avatar    # or npm i / yarn add / bun add
 ```
 
 ## Usage
@@ -37,7 +37,7 @@ Import the package once. That registers `<agent-avatar>`.
 
 ```html
 <script type="module">
-  import '@zeeli/avatars';
+  import 'agent-avatar';
 </script>
 
 <agent-avatar variant="teddy" state="working" size="40"></agent-avatar>
@@ -46,7 +46,7 @@ Import the package once. That registers `<agent-avatar>`.
 ### React 19
 
 ```tsx
-import '@zeeli/avatars';
+import 'agent-avatar';
 
 export function AgentRow({ agent }) {
   return <agent-avatar variant={agent.avatar} state={agent.status} size={28} label={`${agent.name} is ${agent.status}`} />;
@@ -56,7 +56,7 @@ export function AgentRow({ agent }) {
 ### Without a bundler
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/@zeeli/avatars/src/index.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/agent-avatar/src/index.js"></script>
 ```
 
 ## States
@@ -112,7 +112,7 @@ Style the host like any inline-block element. `--size` sets the size from CSS.
 ### Exports
 
 ```js
-import { AgentAvatar, CHARACTERS, SETS, STATES, VARIANTS } from '@zeeli/avatars';
+import { AgentAvatar, CHARACTERS, SETS, STATES, VARIANTS } from 'agent-avatar';
 
 VARIANTS;                    // ['mochi', 'byte', ...]
 CHARACTERS.rex.description;  // 'Tiny dino builder. ...'

@@ -6,7 +6,7 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ### Added
 
-- Open-source release as `@zeeli/avatars` under the MIT license.
+- Open-source release as `agent-avatar` under the MIT license. The project is now called Agent Avatar, matching the `<agent-avatar>` tag.
 - Biome lint and format, type tests, registry tests, a size budget and Playwright browser tests.
 - CI and npm release with provenance workflows.
 - Docs site at https://avatars.zeeli.dev on Cloudflare Workers, with favicons, social preview, a 404 page and security headers.
@@ -50,7 +50,7 @@ All notable changes to this project are documented here. The format follows [Kee
 
 - `<agent-avatar>` web component with Mochi, Byte, Orbit, Teddy, Pip and Kero, each with four states.
 
-[Unreleased]: https://github.com/zeeli-dev/avatars/compare/v0.5.0...HEAD
-[0.5.0]: https://github.com/zeeli-dev/avatars/releases/tag/v0.5.0
-[0.3.0]: https://github.com/zeeli-dev/avatars/commits/main
-[0.1.0]: https://github.com/zeeli-dev/avatars/commits/main
+[Unreleased]: https://github.com/zeeli-dev/agent-avatar/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/zeeli-dev/agent-avatar/releases/tag/v0.5.0
+[0.3.0]: https://github.com/zeeli-dev/agent-avatar/commits/main
+[0.1.0]: https://github.com/zeeli-dev/agent-avatar/commits/main

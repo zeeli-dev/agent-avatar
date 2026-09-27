@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Zeeli Avatars · Animated avatars for AI agents</title>
+<title>Agent Avatar · Animated avatars for AI agents</title>
 <meta name="description" content="Cute animated avatars for AI agents. One zero-dependency web component, 24 characters, four states." />
 <meta name="theme-color" content="#0b0c0e" />
 <link rel="canonical" href="https://avatars.zeeli.dev/" />
@@ -12,8 +12,8 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="manifest" href="site.webmanifest" />
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="Zeeli Avatars" />
-<meta property="og:title" content="Zeeli Avatars" />
+<meta property="og:site_name" content="Agent Avatar" />
+<meta property="og:title" content="Agent Avatar" />
 <meta property="og:description" content="Cute animated avatars for AI agents. One zero-dependency web component, 24 characters, four states." />
 <meta property="og:url" content="https://avatars.zeeli.dev/" />
 <meta property="og:image" content="https://avatars.zeeli.dev/assets/social-preview.png" />
@@ -28,7 +28,7 @@
   <aside class="side" id="side">
     <div class="brand">
       <agent-avatar variant="mochi" state="idle" size="26"></agent-avatar>
-      <b>Zeeli Avatars</b><span>v0.5.0</span>
+      <b>Agent Avatar</b><span>v0.5.0</span>
       <button type="button" class="menu" id="menu" aria-expanded="false" aria-controls="side">Menu</button>
     </div>
     <nav aria-label="Documentation">
@@ -45,9 +45,9 @@
       <a class="link" href="#states">States</a>
       <a class="link" href="#performance">Performance</a>
       <h4>Project</h4>
-      <a class="link" href="https://github.com/zeeli-dev/avatars" rel="noopener">GitHub</a>
-      <a class="link" href="https://www.npmjs.com/package/@zeeli/avatars" rel="noopener">npm</a>
-      <a class="link" href="https://github.com/zeeli-dev/avatars/blob/main/CHANGELOG.md" rel="noopener">Changelog</a>
+      <a class="link" href="https://github.com/zeeli-dev/agent-avatar" rel="noopener">GitHub</a>
+      <a class="link" href="https://www.npmjs.com/package/agent-avatar" rel="noopener">npm</a>
+      <a class="link" href="https://github.com/zeeli-dev/agent-avatar/blob/main/CHANGELOG.md" rel="noopener">Changelog</a>
     </nav>
   </aside>
 
@@ -69,8 +69,8 @@
 
     <main>
       <section id="overview">
-        <div class="eyebrow">Agent avatars</div>
-        <h1>Zeeli Avatars</h1>
+        <div class="eyebrow">By Zeeli</div>
+        <h1>Agent Avatar</h1>
         <p class="lead">Animated avatars for agents and sub-agents. <span id="count"></span> characters, four states each, in a single web component with no dependencies.</p>
         <div class="hero-row" id="hero-row"></div>
       </section>
@@ -78,8 +78,8 @@
       <section id="install">
         <h2>Install</h2>
         <p class="sub-lead">Install from npm, then import it once. Importing it registers the <code>&lt;agent-avatar&gt;</code> element.</p>
-        <pre><code data-lang="sh">pnpm add @zeeli/avatars</code></pre>
-        <pre><code data-lang="js">import '@zeeli/avatars';</code></pre>
+        <pre><code data-lang="sh">pnpm add agent-avatar</code></pre>
+        <pre><code data-lang="js">import 'agent-avatar';</code></pre>
       </section>
 
       <section id="usage">
@@ -87,13 +87,13 @@
         <h3>HTML</h3>
         <pre><code data-lang="html">&lt;agent-avatar variant="teddy" state="working" size="40"&gt;&lt;/agent-avatar&gt;</code></pre>
         <h3>React 19</h3>
-        <pre><code data-lang="js">import '@zeeli/avatars';
+        <pre><code data-lang="js">import 'agent-avatar';
 
 export function AgentRow({ agent }) {
   return &lt;agent-avatar variant={agent.avatar} state={agent.status} size={28} /&gt;;
 }</code></pre>
         <h3>Reading the catalog</h3>
-        <pre><code data-lang="js">import { CHARACTERS, SETS, STATES, VARIANTS } from '@zeeli/avatars';
+        <pre><code data-lang="js">import { CHARACTERS, SETS, STATES, VARIANTS } from 'agent-avatar';
 
 VARIANTS;             // ['mochi', 'byte', ...]
 CHARACTERS.rex.title; // 'Rex'

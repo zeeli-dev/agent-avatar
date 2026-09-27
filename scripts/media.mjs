@@ -11,7 +11,16 @@ const root = resolve(import.meta.dirname, '..');
 const out = (name) => resolve(root, 'docs/assets', name);
 mkdirSync(resolve(root, 'docs/assets'), { recursive: true });
 const server = spawn(process.execPath, ['scripts/serve.mjs', '4181'], { cwd: root, stdio: 'ignore' });
-await new Promise((r) => setTimeout(r, 400));
+for (let i = 0; i < 50; i++) {
+  if (
+    await fetch('http://localhost:4181/src/index.js').then(
+      (r) => r.ok,
+      () => false,
+    )
+  )
+    break;
+  await new Promise((r) => setTimeout(r, 100));
+}
 const browser = await chromium.launch();
 
 const BG = 'radial-gradient(120% 100% at 50% 0%,#1d2027 0%,#0b0c0e 72%)';
@@ -130,8 +139,8 @@ await still(
     640,
     `<div style="height:100%;display:grid;align-content:center;justify-items:center;gap:26px">
       <div style="text-align:center">
-        <div style="font-size:64px;font-weight:700;letter-spacing:-.03em">Zeeli Avatars</div>
-        <div style="font-size:26px;color:#94999f;margin-top:6px">Cute animated avatars for AI agents</div>
+        <div style="font-size:64px;font-weight:700;letter-spacing:-.03em">Agent Avatar</div>
+        <div style="font-size:26px;color:#94999f;margin-top:6px">Cute animated avatars for AI agents · by Zeeli</div>
       </div>
       ${grid(6, '0 30px', featured.map((v, i) => tag(v, STATES[i % 4], 128)).join(''))}
       <div style="font:500 20px ui-monospace,SFMono-Regular,Menlo,monospace;color:#f45120">avatars.zeeli.dev</div>

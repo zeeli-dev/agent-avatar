@@ -1,5 +1,5 @@
 // Type tests: valid usage compiles, invalid usage must error (@ts-expect-error fails if it does not).
-import '@zeeli/avatars';
+import 'agent-avatar';
 import {
   type AgentAvatar,
   type AvatarState,
@@ -8,7 +8,7 @@ import {
   SETS,
   STATES,
   VARIANTS,
-} from '@zeeli/avatars';
+} from 'agent-avatar';
 import { useRef } from 'react';
 
 export function Row({ variant, state }: { variant: AvatarVariant; state: AvatarState }) {

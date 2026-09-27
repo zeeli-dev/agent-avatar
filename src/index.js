@@ -1,4 +1,4 @@
-// @zeeli/avatars: cute animated agent avatars as one zero-dependency web component.
+// agent-avatar: cute animated agent avatars as one zero-dependency web component.
 //
 //   <agent-avatar variant="mochi" state="working" size="28"></agent-avatar>
 //

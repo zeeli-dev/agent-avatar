@@ -1,5 +1,5 @@
 {
-  "name": "@zeeli/avatars",
+  "name": "agent-avatar",
   "version": "0.5.0",
   "description": "Cute animated avatars for AI agents. One zero-dependency web component, 24 characters, four states.",
   "keywords": [
@@ -15,11 +15,11 @@
   ],
   "homepage": "https://avatars.zeeli.dev",
   "bugs": {
-    "url": "https://github.com/zeeli-dev/avatars/issues"
+    "url": "https://github.com/zeeli-dev/agent-avatar/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zeeli-dev/avatars.git"
+    "url": "git+https://github.com/zeeli-dev/agent-avatar.git"
   },
   "license": "MIT",
   "author": "Manno Beats",
